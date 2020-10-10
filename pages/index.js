@@ -1,7 +1,9 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Link from 'next/link';
+import styles from '../styles/Home.module.css';
+import { getSortedPostData } from '../lib/posts';
 
-export default function Home() {
+export default function Home({ allPostsData }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,11 +15,34 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-
+        <h2>
+          Read my <Link href="/posts/first-post">First Post</Link>
+        </h2>
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
+        <div>
+          <p>Only this will be styled</p>
+          <style jsx>{`
+            p {
+              color: red;
+            }
+          `}</style>
+        </div>
+
+        <div>
+          <p>Let's show some posts here</p>
+          <ul>
+            {allPostsData.map((postData) => {
+              return (
+                <li key={postData.id}>
+                  <Link href={`/posts/${postData.id}`}>{postData.title}</Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -61,5 +86,14 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
+}
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostData();
+  return {
+    props: {
+      allPostsData
+    }
+  };
 }
