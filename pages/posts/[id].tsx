@@ -3,10 +3,11 @@ import { getAllPostIds, getPostData } from 'lib/posts';
 
 export default function Post({ postData }) {
   return (
+    
     <>
-    <head>
-  <title>{postData.title}</title>
-    </head>
+      <head>
+        <title>{postData.title}</title>
+      </head>
       <h1>{postData.title}</h1>
       <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></div>
     </>
