@@ -9,6 +9,7 @@ const postsDir = path.join(process.cwd(), 'posts');
 
 export type PostData = {
   slug: string;
+  content?: string;
   contentHtml?: string;
   meta: {
     [key: string]: any;
@@ -54,7 +55,7 @@ export function getAllPostParams(): PostParams[] {
 }
 
 /** Gets post data for single post */
-export async function getPostData(slug: string) {
+export async function getPostData(slug: string): Promise<PostData> {
   //first look for mdx file over just md
   const fullPathMDX = path.join(postsDir, `${slug}.mdx`);
   const fullPathMD = path.join(postsDir, `${slug}.md`);
@@ -68,9 +69,10 @@ export async function getPostData(slug: string) {
     .use(html)
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
-
+  
   return {
     slug,
+    content: matterResult.content,
     contentHtml,
     meta: matterResult.data
   };
