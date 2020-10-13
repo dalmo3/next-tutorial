@@ -1,13 +1,15 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import styles from '../styles/Home.module.css';
-import { getSortedPostData } from '../lib/posts';
+import styles from 'styles/Home.module.css';
+import { getAllPostsData, PostData } from 'lib/postsUtils';
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData, siteConfig }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>{siteConfig.title}</title>
+        
+        {/* <title>{siteConfig.description}</title> */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -34,10 +36,10 @@ export default function Home({ allPostsData }) {
         <div>
           <p>Let's show some posts here</p>
           <ul>
-            {allPostsData.map((postData) => {
+            {allPostsData.map((postData: PostData) => {
               return (
-                <li key={postData.id}>
-                  <Link href={`/posts/${postData.id}`}>{postData.title}</Link>
+                <li key={postData.slug}>
+                  <Link href={`/posts/${postData.slug}`}>{postData.meta.title}</Link>
                 </li>
               );
             })}
@@ -90,10 +92,13 @@ export default function Home({ allPostsData }) {
 }
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostData();
+  const allPostsData = getAllPostsData();
+  const siteConfig = (await import('../siteconfig.json')).default
+  // console.log(')
   return {
     props: {
-      allPostsData
+      allPostsData,
+      siteConfig: siteConfig
     }
   };
 }

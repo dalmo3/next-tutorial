@@ -7,42 +7,61 @@ import { GetStaticPaths } from 'next';
 
 const postsDir = path.join(process.cwd(), 'posts');
 
-type PostData<T> = T & {
-  id: string;
+export type PostData = {
+  slug: string;
   contentHtml?: string;
+  meta: {
+    [key: string]: any;
+  };
 };
 
-export function getSortedPostData() {
+export type PostParams = {
+  params: {
+    slug: string;
+  };
+};
+
+/**
+ * Gets list of posts for use in home, archives pages etc
+ * Sorts by most recent first
+ */
+export function getAllPostsData(): PostData[] {
   const fileNames = fs.readdirSync(postsDir);
+
   const allPostsData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md[x]?$/, '');
     const fullPath = path.join(postsDir, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-
     const matterResult = matter(fileContents);
+
     return {
-      id,
-      ...matterResult.data
-    } as PostData<typeof matterResult.data>;
+      slug: fileName.replace(/\.md[x]?$/, ''),
+      meta: matterResult.data
+    };
   });
 
-  const sortedPosts = allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+  const sortedPosts = allPostsData.sort((a, b) =>
+    a.meta.date < b.meta.date ? 1 : -1
+  );
 
   return sortedPosts;
 }
 
-export function getAllPostIds() {
-  return getSortedPostData().map(({ id }) => ({ params: { id } }));
+/** Params necessary for getStaticPaths */
+export function getAllPostParams(): PostParams[] {
+  return getAllPostsData().map(({ slug }) => ({
+    params: { slug }
+  }));
 }
 
-export async function getPostData(id: string) {
-  const fullPathMDX = path.join(postsDir, `${id}.mdx`);
-  const fullPathMD = path.join(postsDir, `${id}.md`);
+/** Gets post data for single post */
+export async function getPostData(slug: string) {
+  //first look for mdx file over just md
+  const fullPathMDX = path.join(postsDir, `${slug}.mdx`);
+  const fullPathMD = path.join(postsDir, `${slug}.md`);
   // const fullPath = path.join(postsDir, id);
   const fullPath = fs.existsSync(fullPathMDX) ? fullPathMDX : fullPathMD;
 
   const fileContents = fs.readFileSync(fullPath);
-
   const matterResult = matter(fileContents);
 
   const processedContent = await remark()
@@ -51,8 +70,8 @@ export async function getPostData(id: string) {
   const contentHtml = processedContent.toString();
 
   return {
-    id,
+    slug,
     contentHtml,
-    ...matterResult.data
-  } as PostData<typeof matterResult.data>;
+    meta: matterResult.data
+  };
 }
