@@ -1,13 +1,11 @@
-import { GetStaticPaths, GetStaticPathsResult } from 'next';
+import { GetStaticPathsResult } from 'next';
 import {
   getAllPostParams,
   getPostData,
   PostData,
   PostParams
 } from 'lib/postsUtils';
-import Link from 'next/link';
 import Head from 'next/head';
-import { FC, PropsWithChildren } from 'react';
 import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
 interface PostProps {
@@ -15,8 +13,15 @@ interface PostProps {
   postData: PostData;
 }
 
-export default function Post({ source, postData }: PostProps) {
-  const content = hydrate(source, { components: { Link } });
+import Link from 'next/link';
+import { FC } from 'react';
+const components = {
+  Link
+};
+
+const Post: FC<PostProps> = ({ source, postData }) => {
+  const content = hydrate(source, { components });
+
   return (
     <>
       <Head>
@@ -24,12 +29,10 @@ export default function Post({ source, postData }: PostProps) {
       </Head>
       <h1>{postData.meta.title}</h1>
       {content}
-      {/* <article>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></div>
-      </article> */}
     </>
   );
-}
+};
+export default Post;
 
 export function getStaticPaths(): GetStaticPathsResult {
   const paths = getAllPostParams();
@@ -44,9 +47,8 @@ export async function getStaticProps({
 }: PostParams): Promise<{ props: PostProps }> {
   const postData = await getPostData(params.slug);
   const source = await renderToString(postData.content, {
-    components: { Link }
+    components
   });
-  console.log(source);
   return {
     props: {
       source,
