@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "fontsource-fira-sans": "^3.0.5",
     "gray-matter": "^4.0.2",
     "grommet": "^2.15.2",
     "grommet-icons": "^4.5.0",

@@ -1,5 +1,5 @@
-import { Box, Button, Heading, ResponsiveContext } from 'grommet';
-import { Notification } from 'grommet-icons';
+import { Box, Button, Text, ResponsiveContext } from 'grommet';
+import { Code, Notification } from 'grommet-icons';
 import Link from 'next/link';
 import React, { FC, useContext } from 'react';
 
@@ -12,21 +12,18 @@ export const SiteHeader: FC = (props) => {
       tag="header"
       direction="row"
       align="center"
-      justify="between"
+      justify="start"
       background="brand"
       pad={{ left: 'medium', right: 'small', vertical: 'small' }}
       elevation="medium"
       {...props}
     >
-      <Box direction="row">
-        <Heading level="1" margin="none">
-          My Blog
-        </Heading>
-        <Heading level="1" margin="none">
-          My Blog
-        </Heading>
+      <Box direction="row" justify="between" align="center">
+        <Code />
+        <Text margin="none" size="large">
+          dalmo.dev
+        </Text>
       </Box>
-      <Button icon={<Notification />} />
     </Box>
   );
 };
