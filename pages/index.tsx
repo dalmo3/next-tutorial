@@ -2,26 +2,27 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styles from 'styles/Home.module.css';
 import { getAllPostsData, PostData } from 'lib/postsUtils';
+import React from 'react';
+import { Box } from 'grommet';
 
 export default function Home({ allPostsData, siteConfig }) {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>{siteConfig.title}</title>
 
         {/* <title>{siteConfig.description}</title> */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
+      <main>
+        <h1>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
         <h2>
           Read my <Link href="/posts/first-post">First Post</Link>
         </h2>
 
-        <div className={styles.grid}>
+        <div>
           {allPostsData.map((postData: PostData) => {
             return (
               <div key={postData.slug} className={styles.card}>
@@ -31,11 +32,9 @@ export default function Home({ allPostsData, siteConfig }) {
               </div>
             );
           })}
-
         </div>
       </main>
-
-      <footer className={styles.footer}>
+      <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -45,7 +44,7 @@ export default function Home({ allPostsData, siteConfig }) {
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
-    </div>
+    </>
   );
 }
 
