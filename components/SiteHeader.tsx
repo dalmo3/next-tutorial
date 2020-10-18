@@ -5,7 +5,7 @@ import React, { FC, useContext } from 'react';
 
 export const SiteHeader: FC = (props) => {
   const responsive = useContext(ResponsiveContext);
-  console.log(responsive);
+  // console.log(responsive);
 
   return (
     <Box
