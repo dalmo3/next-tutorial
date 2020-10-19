@@ -4,10 +4,11 @@ import { merge, SxStyleProp, Theme, ThemeProvider } from 'theme-ui';
 // import 'fontsource-fira-sans/latin.css';
 import 'fontsource-fira-sans/latin-300.css';
 import 'fontsource-fira-sans/latin-400.css';
+import 'fontsource-fira-code/latin-400.css';
 import 'fontsource-fira-sans/latin-600.css';
 import 'fontsource-merriweather/latin.css';
 import Prism from '@theme-ui/prism';
-import nightOwl from '@theme-ui/prism/presets/prism-okaidia.json';
+import okaidia from '@theme-ui/prism/presets/prism-okaidia.json';
 
 import Link from './Link';
 
@@ -20,7 +21,8 @@ const theme: Theme = merge(tailwind as Theme, {
       'Fira Sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
     // body: 'Consolas',
     headings:
-      'Merriweather, Fira Sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif'
+      'Merriweather, Fira Sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    code: 'Fira Code, Consolas, monospace'
   },
   colors: {
     ...tailwind.colors,
@@ -29,7 +31,21 @@ const theme: Theme = merge(tailwind as Theme, {
     }
   },
   styles: {
-    code: { ...nightOwl },
+    inlineCode: {
+      fontFamily: 'code',
+      fontSize: 'smaller',
+      padding: '2px 5px',
+      backgroundColor: '#eee'
+    },
+    code: { ...okaidia, fontFamily: 'code', fontSize: 'smaller' },
+    pre: {
+      '.highlight': {
+        background: 'hsla(55,0%,30,$,.5)'
+      },
+      maxHeight: '600px',
+      overflowX: 'auto',
+      padding: '20px 20px'
+    },
     strong: {
       fontWeight: 600
     },
@@ -71,8 +87,7 @@ const theme: Theme = merge(tailwind as Theme, {
 
 const components = {
   pre: ({ children }) => <>{children}</>,
-  code: Prism,
-  Link
+  code: Prism
 };
 
 const SiteTheme = ({ children }) => {

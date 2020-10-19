@@ -135,6 +135,7 @@ Right aligned columns
 ## Code
 
 Inline `code`
+- `something else`
 
 
 
@@ -152,6 +153,43 @@ var foo = function (bar) {
 };
 
 console.log(foo(5));
+
+let str = "highlight" 
+var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+
+let str = "highlight" 
+
+// src/gatsby-plugin-theme-ui/index.js
+import prism from '@theme-ui/prism/presets/theme-ui'
+export default {
+  colors: {
+    text: '#000',
+    background: '#fff',
+    primary: '#33e',
+    secondary: '#119',
+    accent: '#639',
+    gray: '#666',
+  },
+  styles: {
+    code: {
+      ...prism,
+    }
+  }
+}
+
+// src/gatsby-plugin-theme-ui/components.js
+import React from 'react'
+import ThemeUIPrism from '@theme-ui/prism'
+import PrismCore from 'prismjs/components/prism-core'
+import 'prismjs/components/prism-r'
+export default {
+  pre: props => props.children,
+  code: props => <ThemeUIPrism {...props} Prism={PrismCore} />,
+}
 ```
 
 ------------------------------------------
