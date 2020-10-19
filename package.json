@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "fontsource-fira-sans": "^3.0.5",
     "gray-matter": "^4.0.2",
     "next": "9.5.4",
     "next-mdx-remote": "^1.0.0",
