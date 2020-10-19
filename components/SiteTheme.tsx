@@ -1,11 +1,12 @@
 import dark from '@theme-ui/preset-dark';
 import tailwind from '@theme-ui/preset-tailwind';
+import Head from 'next/head';
 import { merge, SxStyleProp, Theme, ThemeProvider } from 'theme-ui';
 // import 'fontsource-fira-sans/latin.css';
-import 'fontsource-fira-sans/latin-300.css';
-import 'fontsource-fira-sans/latin-400.css';
-import 'fontsource-fira-sans/latin-600.css';
-import 'fontsource-merriweather/latin.css';
+// import 'fontsource-fira-sans/latin-300.css';
+// import 'fontsource-fira-sans/latin-400.css';
+// import 'fontsource-fira-sans/latin-600.css';
+// import 'fontsource-merriweather/latin.css';
 
 export interface LocalStyles {
   [k: string]: SxStyleProp;
@@ -66,7 +67,19 @@ const theme: Theme = merge(tailwind, {
 });
 
 const SiteTheme = ({ children }) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return <ThemeProvider theme={theme}>
+    <Head>
+      
+    <link
+            rel="preload"
+            href="/assets/fonts/fira-sans.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+    </Head>
+    
+    {children}</ThemeProvider>;
 };
 
 export default SiteTheme;

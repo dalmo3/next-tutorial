@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('public/assets/fonts/fira-sans.woff2') format('woff2');
+}
