@@ -1,8 +1,11 @@
 import dark from '@theme-ui/preset-dark';
 import tailwind from '@theme-ui/preset-tailwind';
 import { merge, SxStyleProp, Theme, ThemeProvider } from 'theme-ui';
-import 'fontsource-fira-sans';
-import 'fontsource-merriweather';
+// import 'fontsource-fira-sans/latin.css';
+import 'fontsource-fira-sans/latin-300.css';
+import 'fontsource-fira-sans/latin-400.css';
+import 'fontsource-fira-sans/latin-600.css';
+import 'fontsource-merriweather/latin.css';
 
 export interface LocalStyles {
   [k: string]: SxStyleProp;
