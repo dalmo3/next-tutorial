@@ -14,17 +14,18 @@ interface PostProps {
 }
 
 import Link from 'components/Link';
+// import Link from 'next/link';
 import { FC } from 'react';
 
 import Prism from '@theme-ui/prism';
 const components = {
-  // Link,
+  Link,
   // pre: ({ children }) => <>{children}</>,
   // code: Prism
 };
 
 const Post: FC<PostProps> = ({ source, postData }) => {
-  const content = hydrate(source);
+  const content = hydrate(source, { components });
 
   return (
     <>
@@ -50,7 +51,9 @@ export async function getStaticProps({
   params
 }: PostParams): Promise<{ props: PostProps }> {
   const postData = await getPostData(params.slug);
-  const source = await renderToString(postData.content);
+  const source = await renderToString(postData.content, {
+    components
+  });
   return {
     props: {
       source,

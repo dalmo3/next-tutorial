@@ -7,15 +7,13 @@ import 'fontsource-fira-sans/latin-400.css';
 import 'fontsource-fira-sans/latin-600.css';
 import 'fontsource-merriweather/latin.css';
 import Prism from '@theme-ui/prism';
-
-import nightOwl from '@theme-ui/prism/presets/dracula.json';
+import nightOwl from '@theme-ui/prism/presets/prism-okaidia.json';
 
 import Link from './Link';
 
 export interface LocalStyles {
   [k: string]: SxStyleProp;
 }
-// console.log(tailwind)
 const theme: Theme = merge(tailwind as Theme, {
   fonts: {
     body:
@@ -70,7 +68,6 @@ const theme: Theme = merge(tailwind as Theme, {
     }
   }
 });
-
 
 const components = {
   pre: ({ children }) => <>{children}</>,
