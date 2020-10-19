@@ -1,10 +1,18 @@
 import NextLink, { LinkProps } from 'next/link';
 import { PropsWithChildren } from 'react';
-import { NavLink } from 'theme-ui';
+import { NavLink, NavLinkProps } from 'theme-ui';
 
-const Link = ({ children, ...props }: PropsWithChildren<LinkProps>) => (
+interface CustomLinkProps extends LinkProps {
+  navLinkProps?: NavLinkProps;
+}
+
+const Link = ({
+  children,
+  navLinkProps,
+  ...props
+}: PropsWithChildren<CustomLinkProps>) => (
   <NextLink {...props} passHref>
-    <NavLink>{children}</NavLink>
+    <NavLink {...navLinkProps}>{children}</NavLink>
   </NextLink>
 );
 export default Link;
