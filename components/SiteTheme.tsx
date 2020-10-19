@@ -10,8 +10,11 @@ export interface LocalStyles {
 // console.log(tailwind)
 const theme: Theme = merge(tailwind, {
   fonts: {
-    body: 'Fira Sans, Open Sans',
-    headings: 'Merriweather, Fira Sans, Open Sans'
+    body:
+      'Fira Sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    // body: 'Consolas',
+    headings:
+      'Merriweather, Fira Sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif'
   },
   colors: {
     ...tailwind.colors,
@@ -60,7 +63,7 @@ const theme: Theme = merge(tailwind, {
 });
 
 const SiteTheme = ({ children }) => {
-  return <ThemeProvider theme={theme}> {children}</ThemeProvider>;
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 export default SiteTheme;
