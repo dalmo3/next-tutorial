@@ -1,3 +1,7 @@
 module.exports = {
-  reactStrictMode: true
+  reactStrictMode: true,
+  experimental:{
+    optimizeFonts:true,
+    optimizeImages:true
+  }
 };
