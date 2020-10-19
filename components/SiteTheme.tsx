@@ -1,8 +1,10 @@
 import dark from '@theme-ui/preset-dark';
 import tailwind from '@theme-ui/preset-tailwind';
 import { merge, SxStyleProp, Theme, ThemeProvider } from 'theme-ui';
-import 'fontsource-fira-sans';
-import 'fontsource-merriweather';
+// import 'fontsource-fira-sans';
+// import 'fontsource-merriweather';
+import React from 'react';
+import Head from 'next/head';
 
 export interface LocalStyles {
   [k: string]: SxStyleProp;
@@ -63,7 +65,31 @@ const theme: Theme = merge(tailwind, {
 });
 
 const SiteTheme = ({ children }) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;1,100"
+          rel="preload"
+          as="style"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;1,100"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+          rel="preload"
+          as="style"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      {children}
+    </ThemeProvider>
+  );
 };
 
 export default SiteTheme;

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "bs": "next build && next start -p 3003"
   },
   "dependencies": {
     "@theme-ui/sidenav": "^0.3.1",
