@@ -1,6 +1,8 @@
-import Link from 'next/link';
 import React, { FC } from 'react';
+import Link from './Link';
 
-export const SiteHeader: FC = () => <Link href="/">Home</Link>;
+export const SiteHeader: FC = () => {
+  return <Link href="/">Home</Link>;
+};
 
 export default SiteHeader;

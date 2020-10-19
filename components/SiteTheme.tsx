@@ -1,9 +1,12 @@
 import dark from '@theme-ui/preset-dark';
 import tailwind from '@theme-ui/preset-tailwind';
-import { merge, Theme, ThemeProvider } from 'theme-ui';
+import { merge, SxStyleProp, Theme, ThemeProvider } from 'theme-ui';
 import 'fontsource-fira-sans';
 import 'fontsource-merriweather';
 
+export interface LocalStyles {
+  [k: string]: SxStyleProp;
+}
 // console.log(tailwind)
 const theme: Theme = merge(tailwind, {
   fonts: {
@@ -44,6 +47,14 @@ const theme: Theme = merge(tailwind, {
     },
     h6: {
       fontFamily: 'headings'
+    }
+  },
+  sizes: {
+    container: ['100%', 600, 800, 1200]
+  },
+  links: {
+    nav: {
+      // fontSize: 99
     }
   }
 });
