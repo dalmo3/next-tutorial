@@ -18,8 +18,9 @@ import Link from 'components/Link';
 import { FC } from 'react';
 
 import Prism from '@theme-ui/prism';
+import { Styled } from 'theme-ui';
 const components = {
-  Link,
+  Link
   // pre: ({ children }) => <>{children}</>,
   // code: Prism
 };
@@ -32,7 +33,8 @@ const Post: FC<PostProps> = ({ source, postData }) => {
       <Head>
         <title>{postData.meta.title}</title>
       </Head>
-      <h1>{postData.meta.title}</h1>
+
+      <Styled.h1>{postData.meta.title}</Styled.h1>
       {content}
     </>
   );
