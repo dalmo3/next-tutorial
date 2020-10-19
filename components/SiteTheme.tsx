@@ -40,12 +40,29 @@ const theme: Theme = merge(tailwind as Theme, {
     },
     code: { ...okaidia, fontFamily: 'code', fontSize: 'smaller' },
     pre: {
-      '.highlight': {
-        background: 'hsla(55,0%,30,$,.5)'
-      },
       maxHeight: '600px',
       overflowX: 'auto',
-      padding: '20px 20px'
+      borderRadius: '10px',
+      padding: '20px 0',
+      counterReset: 'line',
+      '.token-line': {
+        padding: '0 30px 0 20px',
+        '&::before': {
+          counterIncrement: 'line',
+          content: 'counter(line)',
+          paddingRight: '10px',
+          marginRight: '20px',
+          borderRight: '1px solid dimgray',
+          textAlign: 'right',
+          width: '18px',
+          display: 'inline-block'
+        }
+      },
+      '.highlight': {
+        '&::before': {
+          color: 'yellow.3'
+        }
+      }
     },
     strong: {
       fontWeight: 600
