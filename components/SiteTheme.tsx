@@ -6,12 +6,17 @@ import 'fontsource-fira-sans/latin-300.css';
 import 'fontsource-fira-sans/latin-400.css';
 import 'fontsource-fira-sans/latin-600.css';
 import 'fontsource-merriweather/latin.css';
+import Prism from '@theme-ui/prism';
+
+import nightOwl from '@theme-ui/prism/presets/dracula.json';
+
+import Link from './Link';
 
 export interface LocalStyles {
   [k: string]: SxStyleProp;
 }
 // console.log(tailwind)
-const theme: Theme = merge(tailwind, {
+const theme: Theme = merge(tailwind as Theme, {
   fonts: {
     body:
       'Fira Sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
@@ -26,6 +31,7 @@ const theme: Theme = merge(tailwind, {
     }
   },
   styles: {
+    code: { ...nightOwl },
     strong: {
       fontWeight: 600
     },
@@ -65,8 +71,19 @@ const theme: Theme = merge(tailwind, {
   }
 });
 
+
+const components = {
+  pre: ({ children }) => <>{children}</>,
+  code: Prism,
+  Link
+};
+
 const SiteTheme = ({ children }) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme} components={components}>
+      {children}
+    </ThemeProvider>
+  );
 };
 
 export default SiteTheme;
