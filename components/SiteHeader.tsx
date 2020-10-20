@@ -8,7 +8,7 @@ export const SiteHeader: FC = () => {
   return (
     <Flex
       sx={{
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         backgroundColor: 'whitesmoke'
       }}
@@ -20,7 +20,8 @@ export const SiteHeader: FC = () => {
         sx={{
           //@ts-ignore
           width: (theme) => (isMenuOpen ? theme.sizes.sidebar : 184),
-          position: (theme) => (isMenuOpen ? 'fixed' : 'relative'),
+          position: (theme) => (isMenuOpen ? 'fixed' : 'absolute'),
+          left: 0,
           textAlign: 'center'
         }}
       >
