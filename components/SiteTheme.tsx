@@ -37,13 +37,13 @@ const theme: Theme = merge(tailwind as Theme, {
       fontSize: '1.25rem'
     }
   },
-  buttons:{
+  buttons: {
     menu: {
-        width: 'unset',
-        height: 'unset',
-        padding: '0.5rem',
-        cursor: 'pointer',
-        visibility: [null,null,null,null,'hidden']
+      width: 'unset',
+      height: 'unset',
+      padding: '0.5rem',
+      cursor: 'pointer',
+      visibility: [null, null, null, null, 'hidden']
     }
   },
   // responsiveness
@@ -157,7 +157,7 @@ const theme: Theme = merge(tailwind as Theme, {
       verticalAlign: 'top',
       padding: '.75rem'
     }
-  },
+  }
 });
 
 const components = {
