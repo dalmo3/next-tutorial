@@ -25,10 +25,10 @@ const styles: LocalStyles = {
 };
 
 const SiteSidebar = ({ sx = {} }) => {
-  const { isMenuOpen, toggleMenu } = useContext(LayoutContext);
+  const { showMenu, showOverlay, toggleMenu } = useContext(LayoutContext);
   return (
     <>
-      {isMenuOpen && (
+      {showMenu && (
         <Flex as='aside' sx={{ ...sx, ...styles.container }}>
           <Flex sx={styles.content}>
             <Text>Some text here</Text>
@@ -40,16 +40,18 @@ const SiteSidebar = ({ sx = {} }) => {
               <Link href='/'>Contact</Link>
             </Flex>
           </Flex>
-          <Box
-            sx={{
-              bg: '#303030dd',
-              width: (theme) => `calc( 100vw - ${theme.sizes.sidebar}px )`,
-              right: 0,
-              position: 'absolute',
-              height: '10000%'
-            }}
-            onClick={toggleMenu}
-          />
+          {showOverlay && (
+            <Box
+              sx={{
+                bg: '#303030dd',
+                width: (theme) => `calc( 100vw - ${theme.sizes.sidebar}px )`,
+                right: 0,
+                position: 'absolute',
+                height: '100vh'
+              }}
+              onClick={toggleMenu}
+            />
+          )}
         </Flex>
       )}
     </>

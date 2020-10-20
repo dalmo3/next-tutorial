@@ -19,29 +19,46 @@ const styles: LocalStyles = {
 };
 
 interface ILayoutContext {
-  isMenuOpen: boolean;
+  showMenu: boolean;
+  showOverlay: boolean;
   toggleMenu?: () => void;
 }
 
 export const LayoutContext = createContext({
-  isMenuOpen: false
+  showMenu: false
 } as ILayoutContext);
 
 const SiteLayout = ({ children }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showMenu, setshowMenu] = useState(false);
+  const [menuOpenByUser, setMenuOpenByUser] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
   const size = useBreakpointIndex({ defaultIndex: 0 });
-  useEffect(() => {
-    setIsMenuOpen(size >= 4);
-  }, [size]);
-
   const toggleMenu = () => {
-    setIsMenuOpen((isMenuOpen) => !isMenuOpen);
+    setMenuOpenByUser((menuOpenByUser) => !menuOpenByUser);
+    setshowMenu((showMenu) => !showMenu);
   };
 
   const layoutContextObject: ILayoutContext = {
-    isMenuOpen,
+    showMenu,
+    showOverlay,
     toggleMenu
   };
+
+  // auto show sidebar on big screens
+  useEffect(() => {
+    setshowMenu(menuOpenByUser || size >= 4);
+  }, [size]);
+
+  // show overlay on small screens
+  useEffect(() => {
+    setShowOverlay(showMenu && size < 2);
+  }, [showMenu, size]);
+
+  // disable scrollying when overlay shows
+  useEffect(() => {
+    document.body.style.overflow = showOverlay ? 'hidden' : 'unset';
+  }, [showOverlay]);
+
   return (
     <LayoutContext.Provider value={layoutContextObject}>
       <Flex sx={styles.full}>
