@@ -1,30 +1,26 @@
+import { FC } from 'react';
 import { GetStaticPathsResult } from 'next';
+import Head from 'next/head';
+import renderToString from 'next-mdx-remote/render-to-string';
+import hydrate from 'next-mdx-remote/hydrate';
+import { Styled } from 'theme-ui';
+import Link from 'components/Link';
 import {
   getAllPostParams,
   getPostData,
   PostData,
   PostParams
 } from 'lib/postsUtils';
-import Head from 'next/head';
-import renderToString from 'next-mdx-remote/render-to-string';
-import hydrate from 'next-mdx-remote/hydrate';
+import { ISiteConfig } from 'siteconfig';
+
 interface PostProps {
   source: any;
   postData: PostData;
   siteConfig: ISiteConfig;
 }
 
-import Link from 'components/Link';
-// import Link from 'next/link';
-import { FC } from 'react';
-
-import Prism from '@theme-ui/prism';
-import { Styled } from 'theme-ui';
-import { ISiteConfig } from 'siteconfig';
 const components = {
   Link
-  // pre: ({ children }) => <>{children}</>,
-  // code: Prism
 };
 
 const Post: FC<PostProps> = ({ source, postData, siteConfig }) => {
