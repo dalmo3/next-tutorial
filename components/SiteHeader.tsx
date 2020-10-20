@@ -14,8 +14,7 @@ export const SiteHeader: FC = () => {
       }}
       // pl={6}
       pr={4}
-      py={1}
-    >
+      py={1}>
       <Box
         sx={{
           //@ts-ignore
@@ -23,14 +22,13 @@ export const SiteHeader: FC = () => {
           position: (theme) => (isMenuOpen ? 'fixed' : 'absolute'),
           left: 0,
           textAlign: 'center'
-        }}
-      >
-        <Link href="/">
-          <Text variant="brand">dalmo.dev</Text>
+        }}>
+        <Link href='/'>
+          <Text variant='brand'>dalmo.dev</Text>
         </Link>
       </Box>
 
-      <MenuButton variant="menu" onClick={toggleMenu} />
+      <MenuButton variant='menu' onClick={toggleMenu} />
     </Flex>
   );
 };

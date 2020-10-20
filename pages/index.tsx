@@ -10,45 +10,29 @@ export default function Home({ allPostsData, siteConfig }) {
     <div>
       <Head>
         <title>{siteConfig.title}</title>
-
-        {/* <title>{siteConfig.description}</title> */}
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+      <Styled.h2>Absolutest Freshest Content</Styled.h2>
       <Divider />
       <Grid
         sx={{
           gridGap: 3
-        }}
-      >
+        }}>
         {allPostsData.map((postData: PostData) => {
           return (
-            <Link href={`/posts/${postData.slug}`}>
+            <Link href={`/posts/${postData.slug}`} key={postData.slug}>
               <Card
                 sx={{
                   py: 1,
                   px: 4,
                   borderRadius: 10,
                   boxShadow: '0 0 8px rgba(0, 0, 0, 0.125)',
-                  "&:hover":{ 
-                    boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.25)',
-
+                  '&:hover': {
+                    boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.25)'
                   }
-                }}
-                key={postData.slug}
-              >
+                }}>
                 <Styled.h3>{postData.meta.title}</Styled.h3>
-                <Text
-                  as="span"
-                  sx={{
-                    fontVariant: 'small-caps'
-                  }}
-                >
-                  {postData.meta.date}
-                </Text>
+                <Text as='span'>{postData.meta.date}</Text>
               </Card>
             </Link>
           );

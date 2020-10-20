@@ -49,7 +49,7 @@ const theme: Theme = merge(tailwind as Theme, {
   // responsiveness
   sizes: {
     container: ['100%', 600, 800, 1200],
-    sidebar: 320
+    sidebar: 250
   },
   styles: {
     inlineCode: {
