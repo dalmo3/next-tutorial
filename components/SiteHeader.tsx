@@ -18,7 +18,8 @@ export const SiteHeader: FC = () => {
     >
       <Box
         sx={{
-          width: isMenuOpen ? 320 : 184,
+          width: theme => isMenuOpen ? theme.sizes.sidebar : 184,
+          position: theme => isMenuOpen ? 'fixed' : 'relative',
           textAlign: 'center'
         }}
       >

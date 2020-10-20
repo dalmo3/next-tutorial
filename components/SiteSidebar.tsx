@@ -10,8 +10,9 @@ const styles: LocalStyles = {
     backgroundColor: 'whitesmoke',
     flexDirection: 'column',
     flex: '0 1 auto',
-    minWidth: 320,
-    p: 5
+    minWidth: theme => theme.sizes.sidebar,
+    py: 5,
+    px: 4
   },
   content: {
     position: 'fixed',

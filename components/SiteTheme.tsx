@@ -46,6 +46,11 @@ const theme: Theme = merge(tailwind as Theme, {
         visibility: [null,null,null,null,'hidden']
     }
   },
+  // responsiveness
+  sizes: {
+    container: ['100%', 600, 800, 1200],
+    sidebar: 320
+  },
   styles: {
     inlineCode: {
       color: 'black',
@@ -108,10 +113,6 @@ const theme: Theme = merge(tailwind as Theme, {
     h6: {
       fontFamily: 'headings'
     },
-    // responsiveness
-    sizes: {
-      container: ['100%', 600, 800, 1200]
-    },
     // imported from preset-bootstrap
     img: {
       maxWidth: '100%',
@@ -156,7 +157,7 @@ const theme: Theme = merge(tailwind as Theme, {
       verticalAlign: 'top',
       padding: '.75rem'
     }
-  }
+  },
 });
 
 const components = {
