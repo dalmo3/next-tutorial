@@ -44,6 +44,7 @@ const SiteSidebar = ({ sx = {} }) => {
             <Box
               sx={{
                 bg: '#303030dd',
+                //@ts-ignore
                 width: (theme) => `calc( 100vw - ${theme.sizes.sidebar}px )`,
                 right: 0,
                 position: 'absolute',

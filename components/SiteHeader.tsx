@@ -4,7 +4,7 @@ import Link from './Link';
 import { LayoutContext } from './SiteLayout';
 
 export const SiteHeader: FC = () => {
-  const { isMenuOpen, toggleMenu } = useContext(LayoutContext);
+  const { showMenu, toggleMenu } = useContext(LayoutContext);
   return (
     <Flex
       sx={{
@@ -18,8 +18,8 @@ export const SiteHeader: FC = () => {
       <Box
         sx={{
           //@ts-ignore
-          width: (theme) => (isMenuOpen ? theme.sizes.sidebar : 184),
-          position: (theme) => (isMenuOpen ? 'fixed' : 'absolute'),
+          width: (theme) => (showMenu ? theme.sizes.sidebar : 184),
+          position: (theme) => (showMenu ? 'fixed' : 'absolute'),
           left: 0,
           textAlign: 'center'
         }}>
