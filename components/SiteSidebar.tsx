@@ -11,7 +11,7 @@ const styles: LocalStyles = {
     flexDirection: 'column',
     flex: '0 1 auto',
     //@ts-ignore
-    minWidth: theme => theme.sizes.sidebar,
+    minWidth: (theme) => theme.sizes.sidebar,
     py: 5,
     px: 4
   },
@@ -29,15 +29,15 @@ const SiteSidebar = ({ sx = {} }) => {
   return (
     <>
       {isMenuOpen && (
-        <Flex as="aside" sx={{ ...sx, ...styles.container }}>
+        <Flex as='aside' sx={{ ...sx, ...styles.container }}>
           <Flex sx={styles.content}>
             <Text>Some text here</Text>
-            <Divider/>
+            <Divider />
             <Flex sx={styles.links}>
-              <Link href="/">Home</Link>
-              <Link href="/">Projects</Link>
-              <Link href="/">CV</Link>
-              <Link href="/">Contact</Link>
+              <Link href='/'>Home</Link>
+              <Link href='/'>Projects</Link>
+              <Link href='/'>CV</Link>
+              <Link href='/'>Contact</Link>
             </Flex>
           </Flex>
         </Flex>
