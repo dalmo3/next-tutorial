@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'theme-ui';
 const styles = {
-  main: { overflowX: 'hidden' },
+  main: { overflowX: 'hidden' as 'hidden' }, // MOTHER OF HACKS TYPESCRIPT
   container: {
     maxWidth: (theme) => [
       '100vw',
