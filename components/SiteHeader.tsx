@@ -12,16 +12,22 @@ export const SiteHeader: FC = () => {
         alignItems: 'center',
         backgroundColor: 'whitesmoke'
       }}
-      px={4}
+      // pl={6}
+      pr={4}
       py={1}
     >
-      <Box>
+      <Box
+        sx={{
+          width: isMenuOpen ? 320 : 184,
+          textAlign: 'center'
+        }}
+      >
         <Link href="/">
           <Text variant="brand">dalmo.dev</Text>
         </Link>
       </Box>
 
-      <MenuButton variant="menu" onClick={toggleMenu}/>
+      <MenuButton variant="menu" onClick={toggleMenu} />
     </Flex>
   );
 };

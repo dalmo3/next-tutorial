@@ -43,7 +43,7 @@ const theme: Theme = merge(tailwind as Theme, {
         height: 'unset',
         padding: '0.5rem',
         cursor: 'pointer',
-        visibility: ['initial','initial','initial','hidden']
+        visibility: [null,null,null,null,'hidden']
     }
   },
   styles: {
