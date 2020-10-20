@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'theme-ui';
 const styles = {
+  main: { overflowX: 'hidden' as 'hidden' }, // MOTHER OF HACKS TTP
   container: {
     maxWidth: (theme) => [
       '100vw',
@@ -15,8 +16,8 @@ const styles = {
   }
 };
 const SiteMain = ({ children }) => (
-  <main>
+  <Container as='main' sx={styles.main}>
     <Container sx={styles.container}>{children}</Container>
-  </main>
+  </Container>
 );
 export default SiteMain;
