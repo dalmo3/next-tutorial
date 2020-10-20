@@ -1,8 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import { Box, Flex, MenuButton, Text } from 'theme-ui';
 import Link from './Link';
+import { LayoutContext } from './SiteLayout';
 
 export const SiteHeader: FC = () => {
+  const { isMenuOpen, toggleMenu } = useContext(LayoutContext);
   return (
     <Flex
       sx={{
@@ -19,7 +21,7 @@ export const SiteHeader: FC = () => {
         </Link>
       </Box>
 
-      <MenuButton variant="menu" />
+      <MenuButton variant="menu" onClick={toggleMenu}/>
     </Flex>
   );
 };

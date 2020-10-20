@@ -2,11 +2,12 @@ import React from 'react';
 import { Container } from 'theme-ui';
 const styles = {
   container: {
-    // maxWidth: ['100%', 600, 800, 1200],
-    // minWidth: ['100%', 400, 600, 800],
-    mx: 'auto',
-    px: 5,
-    py: 4
+    maxWidth: theme => ['100vw', '100vw', `calc( ${theme.breakpoints[3]} - 320px )`],
+    // minWidth: ['100%', 200 , 100, 100],
+    // mr: 'auto',
+    // ml: 4,
+    px: [4,null,null,6],
+    py: [4,null,null,5]
   }
 };
 const SiteMain = ({children}) => (
