@@ -30,6 +30,22 @@ const theme: Theme = merge(tailwind as Theme, {
       dark: dark.colors
     }
   },
+  text: {
+    brand: {
+      fontFamily: 'headings',
+      fontWeight: 'bold',
+      fontSize: '1.25rem'
+    }
+  },
+  buttons:{
+    menu: {
+        width: 'unset',
+        height: 'unset',
+        padding: '0.5rem',
+        cursor: 'pointer',
+        visibility: ['initial','initial','initial','hidden']
+    }
+  },
   styles: {
     inlineCode: {
       color: 'black',

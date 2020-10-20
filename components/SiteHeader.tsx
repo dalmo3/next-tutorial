@@ -1,12 +1,26 @@
 import React, { FC } from 'react';
-import { Button } from 'theme-ui';
+import { Box, Flex, MenuButton, Text } from 'theme-ui';
 import Link from './Link';
 
 export const SiteHeader: FC = () => {
   return (
-    <Link href="/">
-      <Button variant="outline">Home</Button>
-    </Link>
+    <Flex
+      sx={{
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'whitesmoke'
+      }}
+      px={4}
+      py={1}
+    >
+      <Box>
+        <Link href="/">
+          <Text variant="brand">dalmo.dev</Text>
+        </Link>
+      </Box>
+
+      <MenuButton variant="menu" />
+    </Flex>
   );
 };
 
