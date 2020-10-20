@@ -50,12 +50,12 @@ export default function Home({ allPostsData, siteConfig }) {
 
 export async function getStaticProps() {
   const allPostsData = getAllPostsData();
-  const siteConfig = (await import('../siteconfig.json')).default;
+  const siteConfig = (await import('siteconfig')).default;
   // console.log(')
   return {
     props: {
       allPostsData,
-      siteConfig: siteConfig
+      siteConfig
     }
   };
 }
