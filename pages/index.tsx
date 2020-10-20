@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import { getAllPostsData, PostData } from 'lib/postsUtils';
 import React from 'react';
-import { NavLink } from 'theme-ui';
+import { Card, Divider, Grid, NavLink, Text } from 'theme-ui';
 import Link from 'components/Link';
+import { Styled } from 'theme-ui';
 
 export default function Home({ allPostsData, siteConfig }) {
   return (
@@ -17,21 +18,42 @@ export default function Home({ allPostsData, siteConfig }) {
       <h1>
         Welcome to <a href="https://nextjs.org">Next.js!</a>
       </h1>
-      <h2>
-        Read my <Link href="/posts/first-post">First Post</Link>
-      </h2>
-
-      <div>
+      <Divider />
+      <Grid
+        sx={{
+          gridGap: 3
+        }}
+      >
         {allPostsData.map((postData: PostData) => {
           return (
-            <div key={postData.slug}>
-              <Link href={`/posts/${postData.slug}`}>
-                {postData.meta.title}
-              </Link>
-            </div>
+            <Link href={`/posts/${postData.slug}`}>
+              <Card
+                sx={{
+                  py: 1,
+                  px: 4,
+                  borderRadius: 10,
+                  boxShadow: '0 0 8px rgba(0, 0, 0, 0.125)',
+                  "&:hover":{ 
+                    boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.25)',
+
+                  }
+                }}
+                key={postData.slug}
+              >
+                <Styled.h3>{postData.meta.title}</Styled.h3>
+                <Text
+                  as="span"
+                  sx={{
+                    fontVariant: 'small-caps'
+                  }}
+                >
+                  {postData.meta.date}
+                </Text>
+              </Card>
+            </Link>
           );
         })}
-      </div>
+      </Grid>
     </div>
   );
 }
