@@ -19,12 +19,14 @@ const styles: LocalStyles = {
 };
 
 const SiteSidebar = ({ sx = {} }) => {
-  const { isMenuOpen, toggleMenu } = useContext(LayoutContext);
-  console.log(isMenuOpen);
-  return (
+  const { isMenuOpen, toggleMenu } = useContext(LayoutContext);s  return (
     <>
       {isMenuOpen && (
         <Flex as="aside" sx={{ ...sx, ...styles.container }}>
+          <Flex sx={styles.content}>
+            Sidebar
+          </Flex>
+          <Flex sx={styles.content}>Sidebar</Flex>
           <Flex sx={styles.content}>Sidebar</Flex>
         </Flex>
       )}

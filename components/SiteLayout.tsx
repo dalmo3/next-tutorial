@@ -30,7 +30,6 @@ export const LayoutContext = createContext({
 const SiteLayout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const size = useBreakpointIndex({ defaultIndex: 0 });
-  console.log(size)
   useEffect(() => {
     setIsMenuOpen(size >= 4);
   }, [size]);
