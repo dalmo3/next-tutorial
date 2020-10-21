@@ -33,7 +33,7 @@ const SiteSidebar = ({ sx = {} }) => {
           <Flex sx={styles.content}>
             <Text>Some text here</Text>
             <Divider />
-            <Flex sx={styles.links}>
+            <Flex sx={styles.links} onClick={toggleMenu}>
               <Link href='/'>Home</Link>
               <Link href='/'>Projects</Link>
               <Link href='/'>CV</Link>
