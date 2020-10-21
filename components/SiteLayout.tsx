@@ -32,10 +32,14 @@ const SiteLayout = ({ children }) => {
   const [showMenu, setshowMenu] = useState(false);
   const [menuOpenByUser, setMenuOpenByUser] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
+
   const size = useBreakpointIndex({ defaultIndex: 0 });
+
   const toggleMenu = () => {
-    setMenuOpenByUser((menuOpenByUser) => !menuOpenByUser);
-    setshowMenu((showMenu) => !showMenu);
+    if (size < 4) {
+      setMenuOpenByUser((menuOpenByUser) => !menuOpenByUser);
+      setshowMenu((showMenu) => !showMenu);
+    }
   };
 
   const layoutContextObject: ILayoutContext = {
