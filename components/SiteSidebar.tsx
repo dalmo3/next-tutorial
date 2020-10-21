@@ -37,7 +37,7 @@ const SiteSidebar = ({ sx = {} }) => {
               <Link href='/'>Home</Link>
               <Link href='/'>Projects</Link>
               <Link href='/'>CV</Link>
-              <Link href='/'>Contact</Link>
+              <Link href='/contact'>Contact</Link>
             </Flex>
           </Flex>
           {showOverlay && (
