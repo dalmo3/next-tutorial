@@ -1,3 +1,3 @@
-export default function () {
-  return 'nothing yet';
+export default function Contact() {
+  return 'toEmail( hire, dalmo, dev )';
 }

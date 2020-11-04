@@ -11,17 +11,19 @@ const styles: LocalStyles = {
     flexDirection: 'row',
     flex: '0 1 auto',
     //@ts-ignore
-    minWidth: (theme) => theme.sizes.sidebar
+    minWidth: (theme) => theme.sizes.sidebar,
+    //@ts-ignore
+    maxWidth: (theme) => theme.sizes.sidebar,
   },
   content: {
     py: 5,
     px: 4,
     position: 'fixed',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   links: {
-    flexDirection: 'column'
-  }
+    flexDirection: 'column',
+  },
 };
 
 const SiteSidebar = ({ sx = {} }) => {
@@ -31,11 +33,11 @@ const SiteSidebar = ({ sx = {} }) => {
       {showMenu && (
         <Flex as='aside' sx={{ ...sx, ...styles.container }}>
           <Flex sx={styles.content}>
-            <Text>Some text here</Text>
+            <Text>I'm Dalmo Mendonça, React developer.</Text>
             <Divider />
             <Flex sx={styles.links} onClick={toggleMenu}>
               <Link href='/'>Home</Link>
-              <Link href='/'>Projects</Link>
+              <Link href='/projects'>Projects</Link>
               <Link href='/'>CV</Link>
               <Link href='/contact'>Contact</Link>
             </Flex>
@@ -48,7 +50,7 @@ const SiteSidebar = ({ sx = {} }) => {
                 width: (theme) => `calc( 100vw - ${theme.sizes.sidebar}px )`,
                 right: 0,
                 position: 'absolute',
-                height: '100vh'
+                height: '100vh',
               }}
               onClick={toggleMenu}
             />
