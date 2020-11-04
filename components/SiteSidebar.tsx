@@ -20,6 +20,8 @@ const styles: LocalStyles = {
     px: 4,
     position: 'fixed',
     flexDirection: 'column',
+    minWidth: 'inherit',
+    maxWidth: 'inherit',
   },
   links: {
     flexDirection: 'column',
