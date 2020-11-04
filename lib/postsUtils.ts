@@ -36,11 +36,15 @@ export function getAllPostsData(): PostData[] {
 
     return {
       slug: fileName.replace(/\.md[x]?$/, ''),
-      meta: matterResult.data
+      meta: matterResult.data,
     };
   });
 
-  const sortedPosts = allPostsData.sort((a, b) =>
+  const publishedPosts = allPostsData.filter(
+    (post) => post.meta.draft !== 'true'
+  );
+
+  const sortedPosts = publishedPosts.sort((a, b) =>
     a.meta.date < b.meta.date ? 1 : -1
   );
 
@@ -50,7 +54,7 @@ export function getAllPostsData(): PostData[] {
 /** Params necessary for getStaticPaths */
 export function getAllPostParams(): PostParams[] {
   return getAllPostsData().map(({ slug }) => ({
-    params: { slug }
+    params: { slug },
   }));
 }
 
@@ -69,11 +73,11 @@ export async function getPostData(slug: string): Promise<PostData> {
     .use(html)
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
-  
+
   return {
     slug,
     content: matterResult.content,
     contentHtml,
-    meta: matterResult.data
+    meta: matterResult.data,
   };
 }
