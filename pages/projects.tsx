@@ -1,5 +1,7 @@
 import { Endpoints, ReposGetResponseData } from '@octokit/types';
 import Link from 'components/Link';
+import React from 'react';
+import { Divider, Styled } from 'theme-ui';
 
 type GithubRepo = ReposGetResponseData;
 interface IProject {
@@ -27,6 +29,8 @@ const projectList: IProject[] = [
 const Projects = ({ projectsData }: { projectsData: IProject[] }) => {
   return (
     <>
+      <Styled.h1>Recent Projects</Styled.h1>
+      <Divider />
       {projectsData.map((project) => {
         return (
           <div>

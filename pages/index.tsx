@@ -12,11 +12,11 @@ export default function Home({ allPostsData, siteConfig }) {
         <title>{siteConfig.title}</title>
       </Head>
 
-      <Styled.h2>Absolutest Freshest Content</Styled.h2>
+      <Styled.h1>Absolutest Freshest Content</Styled.h1>
       <Divider />
       <Grid
         sx={{
-          gridGap: 3
+          gridGap: 3,
         }}>
         {allPostsData.map((postData: PostData) => {
           return (
@@ -28,10 +28,10 @@ export default function Home({ allPostsData, siteConfig }) {
                   borderRadius: 10,
                   boxShadow: '0 0 8px rgba(0, 0, 0, 0.125)',
                   '&:hover': {
-                    boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.25)'
-                  }
+                    boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.25)',
+                  },
                 }}>
-                <Styled.h3>{postData.meta.title}</Styled.h3>
+                <Styled.h2>{postData.meta.title}</Styled.h2>
                 <Text as='span'>{postData.meta.date}</Text>
               </Card>
             </Link>
@@ -49,7 +49,7 @@ export async function getStaticProps() {
   return {
     props: {
       allPostsData,
-      siteConfig
-    }
+      siteConfig,
+    },
   };
 }
